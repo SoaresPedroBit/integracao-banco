@@ -1,0 +1,24 @@
+<table border="1">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>CPF</th>
+            <button (click)="salvar()">Criar</button>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @for ( cliente of lista; track $index) {
+        <tr>
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.cpf}}</td>
+            <button>Editar</button>
+            <button (click)="delete(cliente)">Deletar</button>
+        </tr>
+    }
+    </tbody>
+
+</table>
