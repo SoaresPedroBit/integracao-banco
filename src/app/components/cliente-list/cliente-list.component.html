@@ -1,24 +1,31 @@
-<table border="1">
+<div>
+    <label for="searchId">Buscar por ID:</label>
+    <input id="searchId" [(ngModel)]="listaId" (input)="filtroClientes()" type="number" placeholder="Digite o ID">
 
+    <label for="searchName">Buscar por Nome:</label>
+    <input id="searchName" [(ngModel)]="listaNome" (input)="filtroClientes()" type="text" placeholder="Digite o Nome">
+</div>
+
+<table border="1">
     <thead>
         <tr>
             <th>ID</th>
             <th>NOME</th>
             <th>CPF</th>
-            <button (click)="salvar()">Criar</button>
+            <th>Ações</th>
+            <button (click)="salvar()">criar</button>
         </tr>
     </thead>
-    
     <tbody>
-        @for ( cliente of lista; track $index) {
-        <tr>
+        <tr *ngFor="let cliente of (listaFiltrada.length > 0 ? listaFiltrada : lista); trackBy: trackById">
             <td>{{cliente.id}}</td>
             <td>{{cliente.nome}}</td>
             <td>{{cliente.cpf}}</td>
-            <button>Editar</button>
-            <button (click)="delete(cliente)">Deletar</button>
+            <td>
+                <button (click)="editar(cliente.id)">Editar</button>
+                <button (click)="delete(cliente)">Deletar</button>
+            </td>
         </tr>
-    }
     </tbody>
-
 </table>
+

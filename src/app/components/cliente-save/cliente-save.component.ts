@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular
 import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ViaCepService } from '../../services/viacep.service';
 
 
 
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
 export class ClienteSaveComponent implements OnInit{
   clienteForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private clienteService: ClienteService,private route:Router) {}
+  constructor(private fb: FormBuilder, private clienteService: ClienteService,private route:Router, private viaCepService: ViaCepService) {}
 
   ngOnInit(): void {
     this.clienteForm = this.fb.group({
@@ -62,4 +63,47 @@ export class ClienteSaveComponent implements OnInit{
       });
     }
   }
+  buscarEndereco() {
+    const cep = this.clienteForm.get('endereco.cep')?.value; // Corrigido para acessar o cep aninhado
+    if (cep) {
+      this.viaCepService.buscarEndereco(cep).subscribe(
+        (data) => {
+          if (data) {
+            // Preencher os campos de endereço com os dados retornados
+            this.clienteForm.patchValue({
+              endereco: { // Adicionei o prefixo endereco
+                logradouro: data.logradouro,
+                bairro: data.bairro,
+                cidade: data.localidade,
+                uf: data.uf
+              }
+            });
+          } else {
+            Swal.fire({
+              title: 'Erro',
+              text: 'Endereço não encontrado para o CEP informado.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          }
+        },
+        (error) => {
+          Swal.fire({
+            title: 'Erro',
+            text: 'Erro ao buscar endereço. Verifique o CEP e tente novamente.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+      );
+    } else {
+      Swal.fire({
+        title: 'Atenção',
+        text: 'Por favor, insira um CEP válido.',
+        icon: 'warning',
+        confirmButtonText: 'OK'
+      });
+    }
+  }
+  
 }

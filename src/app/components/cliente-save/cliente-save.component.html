@@ -45,6 +45,11 @@
   </div>
 <div formGroupName="endereco">
   <div>
+    <label for="cep">CEP:</label>
+    <input id="cep" formControlName="cep" (blur)="buscarEndereco()" type="text" required />
+  </div>
+  
+  <div>
     <label for="logradouro">Logradouro:</label>
     <input id="logradouro" formControlName="logradouro" type="text" required />
   </div>
@@ -74,10 +79,7 @@
     <input id="uf" formControlName="uf" type="text" required />
   </div>
 
-  <div>
-    <label for="cep">CEP:</label>
-    <input id="cep" formControlName="cep" type="text" required />
-  </div>
+ 
 
 </div>
   

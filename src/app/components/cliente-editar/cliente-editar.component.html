@@ -1,0 +1,87 @@
+<form (ngSubmit)="onSubmit()">
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" [(ngModel)]="cliente.nome" name="nome">
+    </div>
+    
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" type="email" [(ngModel)]="cliente.email" name="email" />
+    </div>
+  
+    <div>
+      <label for="cpf">CPF:</label>
+      <input id="cpf" type="text" [(ngModel)]="cliente.cpf" name="cpf" />
+    </div>
+  
+    <div>
+      <label for="rg">RG:</label>
+      <input id="rg" type="text" [(ngModel)]="cliente.rg" name="rg" />
+    </div>
+  
+    <div>
+      <label for="profissao">Profissão:</label>
+      <input id="profissao" type="text" [(ngModel)]="cliente.profissao" name="profissao" />
+    </div>
+  
+    <div>   
+      <label for="telefone">Telefone:</label>
+      <input id="telefone" type="text" [(ngModel)]="cliente.telefone" name="telefone" />
+    </div>
+  
+    <div>
+      <label for="dataNascimento">Data Nascimento:</label>
+      <input id="dataNascimento" type="date" [(ngModel)]="cliente.dataNascimento" name="dataNascimento" />
+    </div>
+  
+    <div>
+      <label for="estadoCivil">Status civil:</label>
+      <select id="estadoCivil" [(ngModel)]="cliente.estadoCivil" name="estadoCivil">
+        <option value="0">Solteiro</option>
+        <option value="1">Casado</option>
+        <option value="2">Divorciado</option>
+        <option value="3">Viuvo</option>
+      </select>
+    </div>
+
+  <div>
+    <div>
+      <label for="logradouro">Logradouro:</label>
+      <input id="logradouro" type="text" [(ngModel)]="cliente.endereco.logradouro" name="logradouro" />
+    </div>
+  
+    <div>
+      <label for="numero">Número:</label>
+      <input id="numero" type="text" [(ngModel)]="cliente.endereco.numero" name="numero" />
+    </div>
+  
+    <div>
+      <label for="complemento">Complemento:</label>
+      <input id="complemento" type="text" [(ngModel)]="cliente.endereco.complemento" name="complemento" />
+    </div>
+    
+    <div>
+      <label for="bairro">Bairro:</label>
+      <input id="bairro" type="text" [(ngModel)]="cliente.endereco.bairro" name="bairro" />
+    </div>
+    
+    <div>
+      <label for="cidade">Cidade:</label>
+      <input id="cidade" type="text" [(ngModel)]="cliente.endereco.cidade" name="cidade" />
+    </div>
+    
+    <div>
+      <label for="uf">UF:</label>
+      <input id="uf" type="text" [(ngModel)]="cliente.endereco.uf" name="uf" />
+    </div>
+  
+    <div>
+      <label for="cep">CEP:</label>
+      <input id="cep" type="text" [(ngModel)]="cliente.endereco.cep" name="cep" />
+    </div>
+  
+  </div>
+    
+    <button type="submit">Salvar Cliente</button>
+  </form>
+  
