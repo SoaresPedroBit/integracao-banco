@@ -82,6 +82,9 @@ export class ClienteListComponent implements OnInit {
   editar(id:number){
     this.route.navigate(['/editarCliente',id]);
   }
+  processos(id:number){
+    this.route.navigate(['/processo',id]);
+  }
 
   filtroClientes() {
     if (!this.listaId && !this.listaNome) {

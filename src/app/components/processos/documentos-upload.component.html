@@ -1,0 +1,64 @@
+<form [formGroup]="processoForm" (ngSubmit)="onUpload()">
+  <!-- Campos do processo -->
+  <div>
+    <label>Tipo de Cliente</label>
+    <input formControlName="tipoCliente" required>
+  </div>
+
+  <div>
+    <label>Área de Atuação</label>
+    <input formControlName="areaAtuacao" required>
+  </div>
+
+  <div>
+    <label>Número do Processo</label>
+    <input formControlName="numeroProcesso" required>
+  </div>
+
+  <div>
+    <label>Comarca</label>
+    <input formControlName="comarca" required>
+  </div>
+
+  <div>
+    <label>Data de Início</label>
+    <input type="date" formControlName="dataInicio" required>
+  </div>
+
+  <div>
+    <label>Descrição</label>
+    <textarea formControlName="descricao" maxlength="500"></textarea>
+  </div>
+
+  <div>
+    <label>Andamento</label>
+    <input formControlName="andamento">
+  </div>
+
+  <div>
+    <label>Situação Atual</label>
+    <input formControlName="situacaoAtual">
+  </div>
+
+  <div>
+    <label>Prazos Importantes</label>
+    <input formControlName="prazosImportantes">
+  </div>
+
+  <!-- Sub-formulário para Documento -->
+  <div formGroupName="documento">
+    <label>Documentos</label>
+    <input type="file" (change)="onFilesSelected($event)" multiple accept=".pdf">
+    
+    <label>Data de Recebimento</label>
+    <input type="date" formControlName="dataRecebimento" required>
+    
+    <label>Status do Documento</label>
+    <input formControlName="statusDocumento" required>
+    
+    <label>Observação</label>
+    <textarea formControlName="observacao"></textarea>
+  </div>
+
+  <button type="submit">Enviar</button>
+</form>
