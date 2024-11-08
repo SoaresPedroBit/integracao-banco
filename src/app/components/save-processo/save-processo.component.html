@@ -1,0 +1,41 @@
+
+<form [formGroup]="processoForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Tipo de Cliente</label>
+      <input formControlName="tipoCliente" type="text" />
+    </div>
+    <div>
+      <label>Área de Atuação</label>
+      <input formControlName="areaAtuacao" type="text" />
+    </div>
+    <div>
+      <label>Número do Processo</label>
+      <input formControlName="numeroProcesso" type="text" />
+    </div>
+    <div>
+      <label>Comarca</label>
+      <input formControlName="comarca" type="text" />
+    </div>
+    <div>
+      <label>Data de Início</label>
+      <input formControlName="dataInicio" type="date" />
+    </div>
+    <div>
+      <label>Descrição</label>
+      <textarea formControlName="descricao"></textarea>
+    </div>
+    <div>
+      <label>Andamento</label>
+      <input formControlName="andamento" type="text" />
+    </div>
+    <div>
+      <label>Situação Atual</label>
+      <input formControlName="situacaoAtual" type="text" />
+    </div>
+    <div>
+      <label>Cliente ID</label>
+      <input formControlName="clienteId" type="number" />
+    </div>
+    <button type="submit">Salvar</button>
+  </form>
+  

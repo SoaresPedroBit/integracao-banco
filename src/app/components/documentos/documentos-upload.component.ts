@@ -15,39 +15,26 @@ import { DocumentoService } from '../../services/documento.service';
 export class DocumentosUploadComponent implements OnInit {
   processoForm!:FormGroup;
   documentos: File[] = [];
-  clienteId!:string;
+  processoId!:string;
 
   ngOnInit(): void {
     const id = this.router.snapshot.paramMap.get('id');
     if (id) {
-      this.clienteId = id;
+      this.processoId = id;
     } else {
-      // Lidar com a ausência do ID (mostrar mensagem, redirecionar, etc.)
       console.error('ID do cliente não encontrado na URL');
-      // Você pode redirecionar ou mostrar uma mensagem de erro.
     }
+  
+    // Inicialize o FormGroup corretamente
     this.processoForm = this.fb.group({
-      tipoCliente:[''],
-      areaAtuacao:[''],
-      numeroProcesso:[''],
-      comarca:[''],
-      dataInicio:[''],
-      descricao:[''],
-      andamento:[''],
-      situacaoAtual:[''],
-      prazosImportantes:[''],
-      documento:this.fb.group({
-        documentos: [''],
+      documento: this.fb.group({
         dataRecebimento: [''],
         statusDocumento: [''],
         observacao: ['']
       })
-    })
+    });
   }
-
   
-  
-
 
   constructor(private route: Router,
      private documentoService: DocumentoService,
@@ -69,6 +56,9 @@ export class DocumentosUploadComponent implements OnInit {
     this.documentos.forEach(file => {
       formData.append('files', file, file.name);
     });
+  
+    // Adiciona o processoId ao FormData
+    formData.append('processoId', this.processoId);
   
     const documentoForm = this.processoForm.get('documento');
     if (documentoForm) {
@@ -96,5 +86,6 @@ export class DocumentosUploadComponent implements OnInit {
       }
     });
   }
+  
   
 }

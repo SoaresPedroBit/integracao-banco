@@ -1,0 +1,33 @@
+<div>
+    <label for="searchId">Buscar por ID:</label>
+    <input id="searchId" [(ngModel)]="listaId" (input)="filtroProcessos()" type="number" placeholder="Digite o ID">
+
+    <label for="searchName">Buscar por Nome:</label>
+    <input id="searchName" [(ngModel)]="listaNome" (input)="filtroProcessos()" type="text" placeholder="Digite o Nome">
+</div>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Situação</th>
+            <th>Numero processo</th>
+            <th>Ações</th>
+            <button (click)="criarProcesso()">criar</button>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let processo of (listaFiltrada.length > 0 ? listaFiltrada : lista); trackBy: trackById">
+            <td>{{processo.id}}</td>
+            <td>{{processo.situacaoAtual}}</td>
+            <td>{{processo.numeroProcesso}}</td>
+            <td>
+                <button >Editar</button>
+                <button (click)="delete(processo)" >Deletar</button>
+                <button  (click)="uploadDoc(processo.id)">Adicionar documentos</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+

@@ -1,0 +1,17 @@
+<form [formGroup]="processoForm" (ngSubmit)="onUpload()">
+  <div formGroupName="documento">
+    <label>Documentos</label>
+    <input type="file" (change)="onFilesSelected($event)" multiple accept=".pdf">
+    
+    <label>Data de Recebimento</label>
+    <input type="date" formControlName="dataRecebimento" required>
+    
+    <label>Status do Documento</label>
+    <input formControlName="statusDocumento" required>
+    
+    <label>Observação</label>
+    <textarea formControlName="observacao"></textarea>
+  </div>
+
+  <button type="submit">Enviar</button>
+</form>
